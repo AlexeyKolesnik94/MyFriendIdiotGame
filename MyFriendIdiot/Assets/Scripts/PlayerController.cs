@@ -7,7 +7,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float speed;
     [SerializeField] private float jumpForce;
     private float _moveInput;
-    private bool _facingRight = true;
+    private bool _isFacingRight = true;
     private bool _isGrounded;
     [SerializeField] private Transform feetPosition;
     [SerializeField] private float checkRadius;
@@ -40,9 +40,9 @@ public class PlayerController : MonoBehaviour
         
         Run();
 
-        if (!_facingRight && _moveInput > 0) {
+        if (!_isFacingRight && _moveInput > 0) {
             Flip();
-        } else if (_facingRight && _moveInput < 0) {
+        } else if (_isFacingRight && _moveInput < 0) {
             Flip();
         }
 
@@ -61,7 +61,7 @@ public class PlayerController : MonoBehaviour
     }
 
     void Flip() {
-        _facingRight = !_facingRight;
+        _isFacingRight = !_isFacingRight;
         Vector3 Scaler = transform.localScale;
         Scaler.x *= -1;
         transform.localScale = Scaler;
